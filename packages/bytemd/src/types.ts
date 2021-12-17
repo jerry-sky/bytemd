@@ -179,4 +179,8 @@ export interface ViewerProps {
    * If you want further customization, pass a function to mutate sanitize schema.
    */
   sanitize?: (schema: Schema) => Schema
+  /**
+   * Run after updating the viewer component.
+   */
+  afterRender?: (tree: HTMLElement) => any
 }

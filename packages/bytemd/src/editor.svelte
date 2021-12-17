@@ -33,6 +33,7 @@
   export let value: EditorProps['value'] = ''
   export let plugins: NonNullable<EditorProps['plugins']> = []
   export let sanitize: EditorProps['sanitize']
+  export let afterRender: EditorProps['afterRender']
   export let mode: NonNullable<EditorProps['mode']> = 'auto'
   export let previewDebounce: NonNullable<EditorProps['previewDebounce']> = 300
   export let placeholder: EditorProps['placeholder']
@@ -390,6 +391,7 @@
           value={debouncedValue}
           {plugins}
           {sanitize}
+          {afterRender}
           on:hast={(e) => {
             hast = e.detail.hast
             vfile = e.detail.file

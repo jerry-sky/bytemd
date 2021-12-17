@@ -17,6 +17,7 @@
   export let value: ViewerProps['value'] = ''
   export let plugins: NonNullable<ViewerProps['plugins']> = []
   export let sanitize: ViewerProps['sanitize']
+  export let afterRender: ViewerProps['afterRender']
 
   let markdownBody: HTMLElement
   let cbs: ReturnType<NonNullable<BytemdPlugin['viewerEffect']>>[] = []
@@ -79,6 +80,7 @@
     // https://github.com/sveltejs/svelte/issues/6016
     off()
     on()
+    if (afterRender) afterRender(markdownBody)
   })
 
   $: html = `${file}<!--${i}-->`
