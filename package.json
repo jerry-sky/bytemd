@@ -2,6 +2,7 @@
   "name": "bytemd",
   "private": true,
   "scripts": {
+    "prepare": "pnpm run build",
     "clean": "rm -rf packages/*/{lib,dist,tsconfig.tsbuildinfo}",
     "build": "tsc --build && node scripts/process.mjs && rollup -c",
     "build:ci": "UMD=1 npm run build",
