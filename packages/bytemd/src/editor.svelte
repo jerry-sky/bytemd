@@ -29,7 +29,9 @@
   import useGfm from 'codemirror-ssr/mode/gfm/gfm'
   import useYaml from 'codemirror-ssr/mode/yaml/yaml'
   import useYamlFrontmatter from 'codemirror-ssr/mode/yaml-frontmatter/yaml-frontmatter'
-  import slugify from 'slugify'
+  import GithubSlugger from 'github-slugger'
+  
+  const slugify = new GithubSlugger()
 
   export let value: EditorProps['value'] = ''
   export let plugins: NonNullable<EditorProps['plugins']> = []
@@ -47,7 +49,7 @@
     const headings =
       previewEl.querySelectorAll<HTMLHeadingElement>('h1,h2,h3,h4,h5,h6')
     for (const h of headings) {
-      const slug = slugify(h.innerText)
+      const slug = slugify.slug(h.innerText)
       if (anchor === slug) {
         previewEl.scrollTop = h.offsetTop - previewEl.offsetTop + 5
         return
