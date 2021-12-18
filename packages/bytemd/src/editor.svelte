@@ -31,8 +31,6 @@
   import useYamlFrontmatter from 'codemirror-ssr/mode/yaml-frontmatter/yaml-frontmatter'
   import GithubSlugger from 'github-slugger'
   
-  const slugify = new GithubSlugger()
-
   export let value: EditorProps['value'] = ''
   export let plugins: NonNullable<EditorProps['plugins']> = []
   export let sanitize: EditorProps['sanitize']
@@ -46,8 +44,8 @@
   export let overridePreview: EditorProps['overridePreview']
   export let maxLength: NonNullable<EditorProps['maxLength']> = Infinity
   export const goToAnchor = (anchor: string) => {
-    const headings =
-      previewEl.querySelectorAll('h1,h2,h3,h4,h5,h6')
+    const slugify = new GithubSlugger()
+    const headings = previewEl.querySelectorAll('h1,h2,h3,h4,h5,h6')
     for (const h of headings) {
       const slug = slugify.slug(h.innerText)
       if (anchor === slug) {
