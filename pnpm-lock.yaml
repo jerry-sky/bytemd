@@ -334,6 +334,7 @@ importers:
       remark-parse: ^9.0.0
       remark-rehype: ^8.1.0
       select-files: ^1.0.1
+      slugify: ^1.6.4
       tippy.js: ^6.3.1
       unified: ^9.2.2
       unist-util-visit: ^2.0.3
@@ -355,6 +356,7 @@ importers:
       remark-parse: 9.0.0
       remark-rehype: 8.1.0
       select-files: 1.0.1
+      slugify: 1.6.4
       tippy.js: 6.3.1
       unified: 9.2.2
       unist-util-visit: 2.0.3
@@ -15440,6 +15442,11 @@ packages:
   /slide/1.1.6:
     resolution: {integrity: sha1-VusCfWW00tzmyy4tMsTUr8nh1wc=}
     dev: true
+
+  /slugify/1.6.4:
+    resolution: {integrity: sha512-Pcz296CK0uGnTf4iNQId79Uv6/5G16t0g0x3OsxWS8qVSOW+JXNnNHKVcuDiMgEGTWyK6zjlWXo2dvzV/FLf9Q==}
+    engines: {node: '>=8.0.0'}
+    dev: false
 
   /smart-buffer/4.2.0:
     resolution: {integrity: sha512-94hK0Hh8rPqQl2xXc3HsaBoOXKV20MToPkcXvwbISWLEs+64sBq5kFgn2kJDHb1Pry9yrP0dxrCI9RRci7RXKg==}

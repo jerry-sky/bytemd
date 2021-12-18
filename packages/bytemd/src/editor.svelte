@@ -29,6 +29,7 @@
   import useGfm from 'codemirror-ssr/mode/gfm/gfm'
   import useYaml from 'codemirror-ssr/mode/yaml/yaml'
   import useYamlFrontmatter from 'codemirror-ssr/mode/yaml-frontmatter/yaml-frontmatter'
+  import slugify from 'slugify'
 
   export let value: EditorProps['value'] = ''
   export let plugins: NonNullable<EditorProps['plugins']> = []
@@ -42,7 +43,17 @@
   export let uploadImages: EditorProps['uploadImages']
   export let overridePreview: EditorProps['overridePreview']
   export let maxLength: NonNullable<EditorProps['maxLength']> = Infinity
-
+  export const goToAnchor = (anchor: string) => {
+    const headings =
+      previewEl.querySelectorAll<HTMLHeadingElement>('h1,h2,h3,h4,h5,h6')
+    for (const h of headings) {
+      const slug = slugify(h.innerText)
+      if (anchor === slug) {
+        previewEl.scrollTop = h.offsetTop - previewEl.offsetTop + 5
+        return
+      }
+    }
+  }
   $: mergedLocale = { ...en, ...locale }
   const dispatch = createEventDispatcher()
 
@@ -414,8 +425,10 @@
         locale={mergedLocale}
         {currentBlockIndex}
         on:click={(e) => {
-          const headings = previewEl.querySelectorAll('h1,h2,h3,h4,h5,h6')
-          headings[e.detail].scrollIntoView()
+          const headings =
+            previewEl.querySelectorAll < HTMLElement > 'h1,h2,h3,h4,h5,h6'
+          const h = headings[e.detail]
+          previewEl.scrollTop = h.offsetTop - previewEl.offsetTop + 5
         }}
         visible={sidebar === 'toc'}
       />
